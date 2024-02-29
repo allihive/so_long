@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 08:58:52 by alli              #+#    #+#             */
-/*   Updated: 2023/12/12 08:54:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/02/20 13:21:03 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ char	*join_strs(const char *s1, const char *s2)
 	return (join);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_gnl_strdup(const char *s)
 {
 	char	*newstr;
 	int		i;
 
 	i = 0;
 	if (!s)
-		return (ft_strdup(""));
+		return (ft_gnl_strdup(""));
 	while (s[i])
 		i++;
 	newstr = ft_zeromalloc(i + 1, sizeof(char));

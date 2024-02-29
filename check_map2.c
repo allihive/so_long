@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/16 14:30:38 by alli              #+#    #+#             */
+/*   Updated: 2024/02/23 09:08:01 by alli             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	empty_map(char *map)
@@ -16,7 +28,7 @@ void	empty_line(char *map)
 	i = 0;
 	while (map[i])
 	{
-		if (map[0] || (map[i] == '\n' && (map[i + 1]) == '\n'))
+		if (map[0] == '\n' || (map[i] == '\n' && (map[i + 1]) == '\n'))
             error_msg("empty line detected");
 		i++;
 	}
@@ -45,8 +57,8 @@ int	map_is_rctangl(char *map)
     int nl;
 
     nl = 0;
-    row = column_count(map);
-    i = column_count(map);
+    row = y_count(&map);
+    i = y_count(&map);
 	while (map[i])
 	{
         if (i == row)

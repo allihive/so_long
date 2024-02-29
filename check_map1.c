@@ -1,26 +1,31 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map1.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/16 14:30:20 by alli              #+#    #+#             */
+/*   Updated: 2024/02/29 10:33:35 by alli             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    check_walls(t_game *map)
-{
-	check_col_wall(map);
-	check_row_wall(map);
-    return (1);
-}
+#include "so_long.h"
 
 void	check_col_wall(t_game *game)
 {
-    int i;
+    size_t i;
 
     i = 0;
-    while (game->grid[i][0])
+    while (i < game->y)
     {
         if (game->grid[i][0] != '1')
             error_msg("the delicate walls are leaking!");
-        if (game->grid[game->x - 1][0] != '1')
+        if (game->grid[i][game->x - 1] != '1')
             error_msg("the delicate walls are leaking!");
         i++;
     }
-    return (1);
+    // return (1);
 }
 void	check_row_wall(t_game *game)
 {
@@ -33,9 +38,15 @@ void	check_row_wall(t_game *game)
             error_msg("the delicate walls are leaking!");
         if (game->grid[game->y - 1][0] != '1')
             error_msg("the delicate walls are leaking!");
-        i++;
+         i++;
     }
-    return (1);
+    // return (1);
+}
+void    check_walls(t_game *map)
+{
+	check_col_wall(map);
+	check_row_wall(map);
+    // return (1);
 }
 
 void	check_col_exit_play(char *map)
@@ -73,7 +84,6 @@ void	check_map_type(char *map)
     len = ft_strlen(map);
     ber = ".ber";
     cmp = ft_strncmp(&map[len - 4], ber, 4);
-    printf("%d\n", cmp);
     if (cmp != 0)
         error_msg("dear reader: this is not the correct file type"); //false not a ber file
 }
@@ -82,11 +92,12 @@ char *read_map(char *file)
 {
 	char	*line;
     char    *map;
+    // char    *temp;
     int     fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		perror("dear reader: error reading file, try another one");
+		error_msg("dear reader: error reading file, try another one");
     map = ft_calloc(1, 1);
     if (!map)
         return (NULL);
@@ -95,9 +106,11 @@ char *read_map(char *file)
         line = get_next_line(fd);
         if (line)
         {
+            // temp = map;
             map = ft_strjoin(map, line);
             if (!map)
                 return (NULL);
+            // free(temp);
             free(line);
         }
         else
@@ -110,32 +123,13 @@ char *read_map(char *file)
 char    **create_map(char *map) //now I have a 2D array
 {
     char **grid;
-    char *read;
 
-    read = read_map(map);
-    grid = ft_split(read, '\n');
+    grid = ft_split(map, '\n');
     if (!grid)
     {
+        //printf("what happened here");
         free(grid);
         return (NULL);
     }
     return (grid);
-}
- //have a validate map function
-    //check if the map type is correct .ber
-    //check if the map can be read and created
-    //check for an empty map
-    //check_char
-    //check empty line
-    //check for rectangle
-    //check walls
-    //check check valid path
-
-int main ()
-{
-    char *map = "map_1.ber";
-	char *read = read_map(map);
-    char **create = create_map(read);
-    // printf("%p\n", read);
-    printf("%d\n", check_walls(*create));
 }

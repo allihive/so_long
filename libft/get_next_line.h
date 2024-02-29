@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:49:59 by alli              #+#    #+#             */
-/*   Updated: 2023/12/12 09:00:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/02/20 13:18:55 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void	ft_free_strs(char **str, char **str2, char **str3);
 char	*ft_parse_line(char **keep, char **tmp);
-char	*ft_strdup(const char *s);
+char	*ft_gnl_strdup(const char *s);
 void	*ft_zeromalloc(size_t count, size_t size);
 char	*get_after_nline(const char *s);
 char	*get_before_nline(const char *s);

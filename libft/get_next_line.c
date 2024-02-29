@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:48:22 by alli              #+#    #+#             */
-/*   Updated: 2023/12/08 16:58:56 by alli             ###   ########.fr       */
+/*   Updated: 2024/02/20 13:20:33 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	read_line(int fd, char **keep, char **tmp)
 		if (r < 0)
 			return (ft_free_strs(&buf, tmp, keep), 0);
 		buf[r] = '\0';
-		*tmp = ft_strdup(*keep);
+		*tmp = ft_gnl_strdup(*keep);
 		if (!*tmp)
 			return (ft_free_strs(keep, tmp, &buf), 0);
 		ft_free_strs(keep, 0, 0);
@@ -98,7 +98,7 @@ char	*ft_parse_line(char **keep, char **tmp)
 {
 	char	*line;
 
-	*tmp = ft_strdup(*keep);
+	*tmp = ft_gnl_strdup(*keep);
 	if (!*tmp)
 		return (NULL);
 	ft_free_strs(keep, 0, 0);

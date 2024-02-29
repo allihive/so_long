@@ -6,7 +6,7 @@
 #    By: alli <alli@student.hive.fi>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 12:48:50 by alli              #+#    #+#              #
-#    Updated: 2024/02/13 14:50:49 by alli             ###   ########.fr        #
+#    Updated: 2024/02/29 14:29:05 by alli             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,13 @@ SOURCES = ft_atoi.c\
 			ft_memcpy.c\
 			ft_memmove.c\
 			ft_memset.c\
+			ft_putchar.c \
 			ft_putchar_fd.c\
 			ft_putendl_fd.c\
+			ft_putnbr.c \
 			ft_putnbr_fd.c\
 			ft_putstr_fd.c\
+			ft_printf.c \
 			ft_split.c\
 			ft_strchr.c\
 			ft_strdup.c\
@@ -50,20 +53,18 @@ SOURCES = ft_atoi.c\
 			ft_toupper.c\
 			get_next_line.c\
 			get_next_line_utils.c\
-
-BONUS_FILES = ft_lstadd_back.c\
-				ft_lstadd_front.c\
-				ft_lstclear.c\
-				ft_lstdelone.c\
-				ft_lstiter.c\
-				ft_lstlast.c\
-				ft_lstmap.c\
-				ft_lstnew.c\
-				ft_lstsize.c\
+			ft_lstadd_back.c\
+			ft_lstadd_front.c\
+			ft_lstclear.c\
+			ft_lstdelone.c\
+			ft_lstiter.c\
+			ft_lstlast.c\
+			ft_lstmap.c\
+			ft_lstnew.c\
+			ft_lstsize.c\
 
 
 OBJECTS = ${SOURCES:.c=.o}
-BONUS_OBJS = ${BONUS_FILES:.c=.o}
 
 %.o: %.c
 	cc ${CFLAGS} -c $< -o $@
@@ -78,8 +79,5 @@ clean:
 
 fclean: clean
 	rm -f ${NAME}
-
-bonus: ${BONUS_OBJS}
-	ar -rcs ${NAME} ${BONUS_OBJS}
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:13:37 by alli              #+#    #+#             */
-/*   Updated: 2023/11/13 12:02:00 by alli             ###   ########.fr       */
+/*   Updated: 2024/02/29 09:02:54 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	j = 0;
 	new = malloc(((ft_strlen(s1)) + (ft_strlen(s2)) + 1) * sizeof(char));
-	if (new == 0)
-		return (0);
+	if (!new)
+		return (NULL);
 	while (s1[i] != '\0')
 	{
 		new[i] = s1[i];
