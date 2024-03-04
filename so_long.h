@@ -42,10 +42,10 @@ typedef struct s_game
     size_t exit_y;
     mlx_t   *mlx;
     t_img   *img;
-    // mlx_texture_t   *tay_down;
-    // mlx_texture_t   *tay_up;
-    // mlx_texture_t   *tay_right;
-    // mlx_texture_t   *tay_left;
+    mlx_texture_t   *tay_down;
+    mlx_texture_t   *tay_up;
+    mlx_texture_t   *tay_right;
+    mlx_texture_t   *tay_left;
 } t_game;
 
 
@@ -55,11 +55,13 @@ t_img   *init_img_struct(mlx_t *mlx);
 void   fill_background(t_game *game);
 t_img	*load_cobblestones_texture(mlx_t *mlx, t_img *img);
 t_img *load_taylor_texture(mlx_t *mlx, t_img *img);
+void    load_other_tay_textures(t_game *game);
 void    select_image(t_game *data, size_t y, size_t x);
 void    render_map(t_game *game);
 t_img *load_phone_texture(mlx_t *mlx, t_img *img);
 t_img *load_vinyl_texture(mlx_t *mlx, t_img *img);
 t_img *load_willow_texture(mlx_t *mlx, t_img *img);
+t_img *load_exit_closed_texture(mlx_t *mlx, t_img *img);
 
 /*moves*/
 t_game  *move_down(t_game *game);
@@ -70,6 +72,10 @@ void    remove_collect(t_game *game, int y, int x);
 void    move_player(t_game *game, char axis, char dir);
 void    move_hook(mlx_key_data_t keydata, void *data);
 void    check_game(t_game *game);
+void    change_dir(t_game *game, char axis, char dir);
+void    print_moves(t_game *game);
+void    put_to_screen(t_game *game);
+void    tay_direction(t_game *game, char dir);
 
 /*print to screen*/
 void print_vinyl(t_game *game);

@@ -6,27 +6,28 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:24 by alli              #+#    #+#             */
-/*   Updated: 2024/02/29 12:56:58 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/01 14:18:37 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// static void load_other_tay_textures(t_game *game)
-// {
-//     game->tay_down = mlx_load_png("./game_img/tay_front.png");
-//     if (!game->tay_down)
-//         error_msg("Taylor can't come to the game right now");
-//     game->tay_up = mlx_load_png("./game_img/tay_back.png");
-//     if (!game->tay_up)
-//         error_msg("Taylor can't come to the game right now");
-//     game->tay_right = mlx_load_png("./game_img/tay_right.png");
-//     if (!game->tay_right)
-//         error_msg("Taylor can't come to the game right now");
-//     game->tay_left = mlx_load_png("./game_img/tay_left.png");
-//     if (!game->tay_left)
-//         error_msg("Taylor can't come to the game right now");
-// }
+void load_other_tay_textures(t_game *game)
+{
+    game->tay_down = mlx_load_png("./game_img/tay_front.png");
+    if (!game->tay_down)
+        error_msg("Taylor can't come to the game right now");
+    game->tay_up = mlx_load_png("./game_img/tay_back.png");
+    if (!game->tay_up)
+        error_msg("Taylor can't come to the game right now");
+    game->tay_right = mlx_load_png("./game_img/tay_right.png");
+    if (!game->tay_right)
+        error_msg("Taylor can't come to the game right now");
+    game->tay_left = mlx_load_png("./game_img/tay_left.png");
+    if (!game->tay_left)
+        error_msg("Taylor can't come to the game right now");
+}
+
 t_game    *init_struct(char **grid) //using the map 
 {
     t_game *game;
@@ -43,7 +44,7 @@ t_game    *init_struct(char **grid) //using the map
     game->player_y = player_pos(game, 'y');
     game->exit_x = exit_pos(game, 'x');
     game->exit_y = exit_pos(game, 'y');
-    //load player textures
+    load_other_tay_textures(game);
     return (game);
 }
 
@@ -81,6 +82,7 @@ t_img *init_img_struct(mlx_t *mlx)
     pics = load_vinyl_texture(mlx, pics);
     pics = load_phone_texture(mlx, pics);
     pics = load_willow_texture(mlx, pics);
+    pics = load_exit_closed_texture(mlx, pics);
     return (pics);
 }
 

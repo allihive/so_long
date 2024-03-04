@@ -6,36 +6,34 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:04:54 by alli              #+#    #+#             */
-/*   Updated: 2024/02/29 15:12:39 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/04 09:26:09 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int32_t mlx_image_to_window(mlx_t* mlx, mlx_image_t* img, int32_t x, int32_t y);
-
 void    put_to_screen(t_game *game)
 {
-    game->img->moves_print = mlx_put_string(game->mlx, "MOVES:", 16, game->y * PIXELS);
-    mlx_image_to_window(game->mlx, game->img->vinyl_nbr, 140, game->y * PIXELS - 44);
-    mlx_put_string(game->mlx, ":", 160, game->y * PIXELS - 44);
+    game->img->moves_print = mlx_put_string(game->mlx, "MOVES:", 40, game->y * 37 - 30);
+    mlx_image_to_window(game->mlx, game->img->vinyl, 175, game->y * 37 - 40);
+    mlx_put_string(game->mlx, ":", 212, game->y * 37 - 30);
 }
-void    print_moves(t_game *game)
+void    print_moves(t_game *game) //in check_game
 {
     char *moves;
 
     moves = ft_itoa(game->steps);
     mlx_delete_image(game->mlx, game->img->moves_nbr);
-    game->img->moves_nbr = mlx_put_string(game->mlx, moves, 175, game->y * 37 -16);
-    
+    game->img->moves_nbr = mlx_put_string(game->mlx, moves, 100, game->y * 37 - 30);
+    ft_printf("MOVES: %d\n", game->steps);//leaking here
 }
 
-void print_vinyl(t_game *game)
+void print_vinyl(t_game *game) //in move_hook
 {
     char *string;
 
     string = ft_itoa(game->collected + 1);
-    mlx_delete_image(game->mlx, game->img->vinyl_nbr); //vinyl_nbr instead of vinyl
-    game->img->vinyl_nbr = mlx_put_string(game->mlx, string, 175, game->y * 37 -16);
+    mlx_delete_image(game->mlx, game->img->vinyl_nbr);
+    game->img->vinyl_nbr = mlx_put_string(game->mlx, string, 225, game->y * 37 - 30);
     free(string);
 }

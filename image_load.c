@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:29:31 by alli              #+#    #+#             */
-/*   Updated: 2024/02/29 09:10:11 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/01 09:57:58 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_img *load_vinyl_texture(mlx_t *mlx, t_img *img)//what happened here?
     mlx_delete_texture(vinyl);
     return (img);
 }
+
 t_img *load_willow_texture(mlx_t *mlx, t_img *img)
 {
     mlx_texture_t   *willow;
@@ -76,6 +77,19 @@ t_img *load_willow_texture(mlx_t *mlx, t_img *img)
     if (!img->willow)
         error_msg("life was a willow and it bent wrong to the wind, txtre->img not loaded");
     mlx_delete_texture(willow);
+    return (img);
+}
+
+t_img *load_exit_closed_texture(mlx_t *mlx, t_img *img)
+{
+    mlx_texture_t   *apple;
+    apple = mlx_load_png("./game_img/exit_closed.png");
+    if (!apple)
+        error_msg("The gates are locked, png hasn't loaded");
+    img->exit_closed = mlx_texture_to_image(mlx, apple);
+    if (!img->exit_closed)
+        error_msg("The gates are locked, txtre->img not loaded");
+    mlx_delete_texture(apple);
     return (img);
 }
 
@@ -90,13 +104,13 @@ void    select_image(t_game *data, size_t y, size_t x)
             error_msg("Rust grew between telephones");
     if (data->grid[y][x] == 'P')
         if (mlx_image_to_window(data->mlx, data->img->taylor, x * PIXELS, y * PIXELS) < 0)
-            error_msg("Taylor can't come to the window right now"); //something happened here
+            error_msg("Taylor can't come to the window right now");
     if (data->grid[y][x] == 'C')
         if(mlx_image_to_window(data->mlx, data->img->vinyl, x * PIXELS, y * PIXELS) < 0)
             error_msg("burned my cd, my cd hasn't loaded");
     if (data->grid[y][x] == 'E')
-        if(mlx_image_to_window(data->mlx, data->img->willow, x * PIXELS, y * PIXELS) < 0)
-            error_msg("life was a willow and it bent wrong to the wind");
+        if(mlx_image_to_window(data->mlx, data->img->exit_closed, x * PIXELS, y * PIXELS) < 0)
+            error_msg("You're not out of the woods yet");
 }
 
 

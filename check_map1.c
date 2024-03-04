@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:20 by alli              #+#    #+#             */
-/*   Updated: 2024/02/29 10:33:35 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/01 15:28:49 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	check_col_wall(t_game *game)
             error_msg("the delicate walls are leaking!");
         i++;
     }
-    // return (1);
 }
 void	check_row_wall(t_game *game)
 {
@@ -40,13 +39,11 @@ void	check_row_wall(t_game *game)
             error_msg("the delicate walls are leaking!");
          i++;
     }
-    // return (1);
 }
 void    check_walls(t_game *map)
 {
 	check_col_wall(map);
 	check_row_wall(map);
-    // return (1);
 }
 
 void	check_col_exit_play(char *map)
@@ -92,7 +89,7 @@ char *read_map(char *file)
 {
 	char	*line;
     char    *map;
-    // char    *temp;
+    char    *temp;
     int     fd;
 
 	fd = open(file, O_RDONLY);
@@ -106,11 +103,11 @@ char *read_map(char *file)
         line = get_next_line(fd);
         if (line)
         {
-            // temp = map;
+            temp = map;
             map = ft_strjoin(map, line);
             if (!map)
                 return (NULL);
-            // free(temp);
+            free(temp);
             free(line);
         }
         else

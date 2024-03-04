@@ -6,11 +6,23 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:44:38 by alli              #+#    #+#             */
-/*   Updated: 2024/02/29 14:33:12 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/01 15:12:51 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void    tay_direction(t_game *game, char dir)
+{
+    if (dir == 'u')
+        mlx_draw_texture(game->img->taylor, game->tay_up, 0, 0);
+    if (dir == 'l')
+        mlx_draw_texture(game->img->taylor, game->tay_left, 0, 0);
+    if (dir == 'd')
+        mlx_draw_texture(game->img->taylor, game->tay_down, 0, 0);
+    if (dir == 'r')
+        mlx_draw_texture(game->img->taylor, game->tay_right, 0, 0);
+}
 
 void    remove_collect(t_game *game, int y, int x)
 {
@@ -120,6 +132,12 @@ void    move_player(t_game *game, char axis, char dir)
     }
 }
 
+void    change_dir(t_game *game, char axis, char dir)
+{
+    move_player(game, axis, dir);
+    tay_direction(game, dir);
+}
+
 void    move_hook(mlx_key_data_t keydata, void *data)
 {
     t_game  *game;
@@ -128,11 +146,11 @@ void    move_hook(mlx_key_data_t keydata, void *data)
     if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
         mlx_close_window(game->mlx);
     if(keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-        move_player(game, 'y', 'u');
-    else if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-        move_player(game, 'y', 'd');
+        change_dir(game, 'y', 'u');
+    if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+        change_dir(game, 'y', 'd');
     if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-        move_player(game, 'x', 'l');
+        change_dir(game, 'x', 'l');
     if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-        move_player (game, 'x', 'r');
+        change_dir (game, 'x', 'r');
 }

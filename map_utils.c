@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:31:08 by alli              #+#    #+#             */
-/*   Updated: 2024/02/29 14:34:35 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/01 15:31:22 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	y_count(char **grid)
 
 void    check_game(t_game *game)
 {
-    //print_moves
+    print_moves(game);
     if(game->collected == game->vinyl)
     {
         if(mlx_image_to_window(game->mlx, game->img->willow, game->exit_x * PIXELS, game->exit_y * PIXELS) < 0)
@@ -45,7 +45,7 @@ void    check_game(t_game *game)
             sleep(1);
             ft_printf("You helped Taylor collect all her masters!\n");
             ft_printf("And she had a great escape, the London prison break\n");
-            ft_printf("she's gone to the place where all the poets went to die\n");
+            ft_printf("she's gone to the place where all the poets went to write ;)\n");
             ft_printf("SO LONG LONDON\n");
         }
     }
