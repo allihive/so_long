@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:22 by alli              #+#    #+#             */
-/*   Updated: 2024/02/27 15:00:30 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/05 13:22:49 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ void flood_fill(t_game *game)
     tmp.exit_x = 0;
     tmp.grid = (char**)malloc(tmp.y * sizeof(char *));
     if (!tmp.grid)
-        error_msg("these memories did not follow and leaked instead");
+        error_msg("these memories did not follow and leaked instead", game, -1);
     i = 0;
     while (i < tmp.y)
     {
         tmp.grid[i] = ft_strdup(game->grid[i]);
         i++;
     }
-    check_path(&tmp, tmp.player_y, tmp.player_x);//segfaulting here
+    check_path(&tmp, tmp.player_y, tmp.player_x);
     if (!(tmp.exit_x == 1 && tmp.vinyl == 0))
-        error_msg("this path is reckless");
+        error_msg("this path is reckless", game, -1);
     free_grid(tmp.grid, tmp.y);
 }

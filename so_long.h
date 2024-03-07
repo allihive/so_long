@@ -11,8 +11,6 @@
 #include <errno.h>
 #include <fcntl.h>
 
-// #define WIDTH 720
-// #define HEIGHT 480
 #define PIXELS 37
 
 typedef struct s_img
@@ -55,7 +53,7 @@ t_img   *init_img_struct(mlx_t *mlx);
 void   fill_background(t_game *game);
 t_img	*load_cobblestones_texture(mlx_t *mlx, t_img *img);
 t_img *load_taylor_texture(mlx_t *mlx, t_img *img);
-void    load_other_tay_textures(t_game *game);
+// void    load_other_tay_textures(t_game *game);
 void    select_image(t_game *data, size_t y, size_t x);
 void    render_map(t_game *game);
 t_img *load_phone_texture(mlx_t *mlx, t_img *img);
@@ -74,11 +72,13 @@ void    move_hook(mlx_key_data_t keydata, void *data);
 void    check_game(t_game *game);
 void    change_dir(t_game *game, char axis, char dir);
 void    print_moves(t_game *game);
-void    put_to_screen(t_game *game);
 void    tay_direction(t_game *game, char dir);
 
 /*print to screen*/
 void print_vinyl(t_game *game);
+void    put_to_screen(t_game *game);
+void    print_moves(t_game *game);
+void    free_all(t_game *game, t_img *images);
 
 /*map validation*/
 
@@ -87,17 +87,18 @@ void	check_col_exit_play(char *map);
 void	check_col_wall(t_game *game);
 void	check_row_wall(t_game *game);
 void	check_map_type(char *map);
+void    check_map_size(char **grid);
 void    check_walls(t_game *map);
 size_t	collect_count(t_game *game);
 char    **create_map(char *map);
 void	empty_line(char *map);
 void	empty_map(char *map);
-void	error_msg(char *str);
+void error_msg(char *str, t_game *game, int i);
 size_t	exit_pos(t_game *game, char c);
 void	flood_fill(t_game *game);
 void    free_grid(char **grid, size_t height);
 t_game  *init_struct(char **grid);
-int		map_is_rctangl(char *map);
+void	map_is_rctangl(char **grid);
 size_t	player_pos(t_game *game, char c);
 char	*read_map(char *file);
 t_game  *valid_map(char *map);

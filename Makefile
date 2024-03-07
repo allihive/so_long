@@ -20,7 +20,7 @@ SRCS = check_map1.c \
 		error_handling.c \
 		initialize_struct.c \
 		item_coordinates.c \
-		map_utils.c \
+		miscellaneous.c \
 		move_player.c \
 		print_actions.c \
 		so_long.c \
