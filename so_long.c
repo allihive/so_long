@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:26:05 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 14:40:46 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/15 16:52:26 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	game->mlx = mlx_init(game->x * PIXELS, game->y * PIXELS, "so_long", true);
 	if (!game->mlx)
 		return (EXIT_FAILURE);
-	images = init_img_struct(game->mlx);
+	images = init_img_struct(game);
 	game->img = images;
 	fill_background(game);
 	render_map(game);
@@ -33,6 +33,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game->mlx, move_hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
-	free_all(game, images);
+	free_end(game, images);
 	return (EXIT_SUCCESS);
 }

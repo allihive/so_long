@@ -16,6 +16,7 @@ INCLUDES = -I/opt/X11/include -Imlx
 SRCS = check_map1.c \
 		check_map2.c \
 		check_path.c \
+		error_handling.c \
 		image_load.c \
 		initialize_struct.c \
 		item_coordinates.c \
@@ -45,17 +46,15 @@ ${LIBFT}:
 
 ${MLX42}:
 	cd MLX42 &&	cmake -B build && cmake --build build -j4
-	# make -C ./MLX42
 clean:
 	rm -f ${OBJ}
 	@make clean -C ${LIBFT_DIR}
+	rm -rf MLX42/build
 
 fclean: clean
 	rm -f ${NAME}
-	rm -rf MLX42/build
 	@make fclean -C ${LIBFT_DIR}
 
 re: fclean all
 
 .PHONY: all clean fclean re
-	rm -f ${NAME}

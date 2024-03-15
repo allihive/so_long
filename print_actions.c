@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:04:54 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 13:41:50 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/15 13:11:44 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	put_to_screen(t_game *game)
 {
 	game->img->moves_print = mlx_put_string(game->mlx, "MOVES:",
 			40, game->y * 37 - 30);
-	mlx_image_to_window(game->mlx, game->img->vinyl, 175, game->y * 37 - 40);
+	if (!mlx_image_to_window(game->mlx, game->img->vinyl,
+			175, game->y * 37 - 40))
+		error_msg("counter didn't work", game, -1);
 	mlx_put_string(game->mlx, ":", 212, game->y * 37 - 30);
 }
 
@@ -41,6 +43,8 @@ void	print_moves(t_game *game)
 	char	*moves;
 
 	moves = ft_itoa(game->steps);
+	if (!moves)
+		error_msg("moves not printed", game, -1);
 	mlx_delete_image(game->mlx, game->img->moves_nbr);
 	game->img->moves_nbr = mlx_put_string(game->mlx, moves,
 			100, game->y * 37 - 30);
@@ -53,6 +57,8 @@ void	print_vinyl(t_game *game)
 	char	*string;
 
 	string = ft_itoa(game->collected + 1);
+	if (!string)
+		error_msg("vinyl not printed", game, -1);
 	mlx_delete_image(game->mlx, game->img->vinyl_nbr);
 	game->img->vinyl_nbr = mlx_put_string(game->mlx, string,
 			225, game->y * 37 - 30);

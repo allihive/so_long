@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:24 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 14:37:37 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/15 16:51:29 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ t_game	*valid_map(char *map)
 	return (game_info);
 }
 
-t_img	*init_img_struct(mlx_t *mlx)
+t_img	*init_img_struct(t_game *game)
 {
 	t_img	*pics;
 
 	pics = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!pics)
 		return (NULL);
-	pics = load_cobblestones_texture(mlx, pics);
-	pics = load_taylor_texture(mlx, pics);
-	pics = load_vinyl_texture(mlx, pics);
-	pics = load_phone_texture(mlx, pics);
-	pics = load_willow_texture(mlx, pics);
-	pics = load_exit_closed_texture(mlx, pics);
+	pics = load_cobblestones_texture(game, pics);
+	pics = load_taylor_texture(game, pics);
+	pics = load_vinyl_texture(game, pics);
+	pics = load_phone_texture(game, pics);
+	pics = load_willow_texture(game, pics);
+	pics = load_exit_closed_texture(game, pics);
 	return (pics);
 }

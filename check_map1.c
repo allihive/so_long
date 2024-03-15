@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:20 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 14:29:45 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/15 13:01:15 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	check_col_exit_play(char *map)
 	if (c < 1 || e != 1 || p != 1)
 	{
 		free(map);
-		error_msg("Not the correct characters", 0, 1);
+		error_msg("Map things are the incorrect number", 0, 1);
 	}
 }
 
@@ -87,8 +87,5 @@ void	check_map_type(char *map)
 	ber = ".ber";
 	cmp = ft_strncmp(&map[len - 4], ber, 4);
 	if (cmp != 0)
-	{
-		free (map);
 		error_msg("dear reader: this is not the correct file type", 0, 1);
-	}
 }

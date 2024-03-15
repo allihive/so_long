@@ -6,20 +6,11 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:31:08 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 14:13:55 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/12 10:13:32 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	error_msg(char *str, t_game *game, int i) //can remove if needed
-{
-	ft_putstr_fd("Error\n", 2);
-	ft_putendl_fd(str, 2);
-	if (i < 0)
-		free_all(game, game->img);
-	exit (1);
-}
 
 size_t	x_count(char *map)
 {
@@ -63,15 +54,4 @@ void	check_game(t_game *game)
 			ft_printf("SO LONG, LONDON\n");
 		}
 	}
-}
-
-void	free_all(t_game *game, t_img *images)
-{
-	free_grid(game->grid, game->y);
-	mlx_delete_texture(game->tay_down);
-	mlx_delete_texture(game->tay_left);
-	mlx_delete_texture(game->tay_up);
-	mlx_delete_texture(game->tay_right);
-	free(images);
-	free(game);
 }

@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:38 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 14:31:18 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/12 13:03:45 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	empty_map(char *map)
 
 	i = 0;
 	if (!map[i])
+	{
+		free(map);
 		error_msg("the map is empty", 0, 1);
+	}
 }
 
 void	empty_line(char *map)
@@ -29,11 +32,17 @@ void	empty_line(char *map)
 	while (map[i])
 	{
 		if (map[0] == '\n' || (map[i] == '\n' && (map[i + 1]) == '\n'))
+		{
+			free (map);
 			error_msg("empty line detected", 0, 1);
+		}
 		i++;
 	}
 	if (map[i - 1] == '\n')
+	{
+		free(map);
 		error_msg("empty line detected", 0, 1);
+	}
 }
 
 int	check_char(char *map)

@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:51:30 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 13:51:42 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/15 16:51:57 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ typedef struct s_game
 }	t_game;
 
 /*image loading*/
-t_img	*init_img_struct(mlx_t *mlx);
+t_img	*init_img_struct(t_game *game);
 void	fill_background(t_game *game);
-t_img	*load_cobblestones_texture(mlx_t *mlx, t_img *img);
-t_img	*load_taylor_texture(mlx_t *mlx, t_img *img);
+t_img	*load_cobblestones_texture(t_game *game, t_img *img);
+t_img	*load_taylor_texture(t_game *game, t_img *img);
 void	select_image(t_game *data, size_t y, size_t x);
 void	render_map(t_game *game);
-t_img	*load_phone_texture(mlx_t *mlx, t_img *img);
-t_img	*load_vinyl_texture(mlx_t *mlx, t_img *img);
-t_img	*load_willow_texture(mlx_t *mlx, t_img *img);
-t_img	*load_exit_closed_texture(mlx_t *mlx, t_img *img);
+t_img	*load_phone_texture(t_game *game, t_img *img);
+t_img	*load_vinyl_texture(t_game *game, t_img *img);
+t_img	*load_willow_texture(t_game *game, t_img *img);
+t_img	*load_exit_closed_texture(t_game *game, t_img *img);
 
 /*moves*/
 t_game	*move_down(t_game *game);
@@ -83,11 +83,16 @@ void	print_moves(t_game *game);
 void	tay_direction(t_game *game, char dir);
 
 /*print to screen*/
-void	free_all(t_game *game, t_img *images);
 void	print_vinyl(t_game *game);
 void	put_to_screen(t_game *game);
 void	print_moves(t_game *game);
 void	remove_collect(t_game *game, int y, int x);
+
+/*error-handling*/
+void	error_image(t_game *game);
+void	free_end(t_game *game, t_img *images);
+void	error_msg(char *str, t_game *game, int i);
+void	free_grid(char **grid, size_t height);
 
 /*map validation*/
 int		check_char(char *map);
@@ -101,10 +106,8 @@ size_t	collect_count(t_game *game);
 char	**create_map(char *map);
 void	empty_line(char *map);
 void	empty_map(char *map);
-void	error_msg(char *str, t_game *game, int i);
 size_t	exit_pos(t_game *game, char c);
 void	flood_fill(t_game *game);
-void	free_grid(char **grid, size_t height);
 t_game	*init_struct(char **grid);
 void	map_is_rctangl(char **grid);
 size_t	player_pos(t_game *game, char c);

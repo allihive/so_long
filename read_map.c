@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:33:34 by alli              #+#    #+#             */
-/*   Updated: 2024/03/08 13:42:40 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/15 10:16:55 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**create_map(char *map) //now I have a 2D array
 	grid = ft_split(map, '\n');
 	if (!grid)
 	{
-		free(grid);
+		free(map);
 		return (NULL);
 	}
 	return (grid);
