@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:29:31 by alli              #+#    #+#             */
-/*   Updated: 2024/03/15 16:54:45 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/15 17:02:17 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_img	*load_cobblestones_texture(t_game *game, t_img *img)
 
 	cobblestones = mlx_load_png("./game_img/cobblestones.png");
 	if (!cobblestones)
-		error_msg("walking on broken cobblestones, png hasn't loaded", game, -1);
+		error_msg("walking on broken cobblestones, png hasn't loaded",
+			game, -1);
 	img->cobblestones = mlx_texture_to_image(game->mlx, cobblestones);
 	if (!img->cobblestones)
 		error_msg("walking on broken cobblestones, txtre->img not loaded",

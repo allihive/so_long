@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:33:34 by alli              #+#    #+#             */
-/*   Updated: 2024/03/15 10:16:55 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/20 12:49:07 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*read_map(char *file)
 		error_msg("dear reader: error reading file, try another one", 0, 1);
 	map = ft_calloc(1, 1);
 	if (!map)
-		return (NULL);
+		error_msg("map wasn't allocated", 0, 1);
 	while (1)
 	{
 		line = get_next_line(fd);

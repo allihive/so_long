@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:24 by alli              #+#    #+#             */
-/*   Updated: 2024/03/15 16:51:29 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/20 13:05:41 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_img	*init_img_struct(t_game *game)
 
 	pics = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!pics)
-		return (NULL);
+		error_msg("pics not loaded", game, -1);
 	pics = load_cobblestones_texture(game, pics);
 	pics = load_taylor_texture(game, pics);
 	pics = load_vinyl_texture(game, pics);

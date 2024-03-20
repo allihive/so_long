@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:22 by alli              #+#    #+#             */
-/*   Updated: 2024/03/15 16:39:18 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/20 12:51:52 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	flood_fill(t_game *game)
 	while (i < tmp.y)
 	{
 		tmp.grid[i] = ft_strdup(game->grid[i]);
+		if (!tmp.grid)
+			error_msg("unable to free tmp.grid", game, -1);
 		i++;
 	}
 	check_path(&tmp, tmp.player_y, tmp.player_x);
