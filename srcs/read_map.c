@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:33:34 by alli              #+#    #+#             */
-/*   Updated: 2024/03/20 12:49:07 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/20 13:41:25 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*read_map(char *file)
 		{
 			map = ft_strjoin(map, line);
 			if (!map)
-				return (NULL);
+				error_msg("map not joined", 0, 1);
 			free(line);
 		}
 		else

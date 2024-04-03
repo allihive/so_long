@@ -1,6 +1,6 @@
 NAME = so_long
 
-CFLAGS =  -Wall -Wextra -Werror -I./libft
+CFLAGS =  -Wall -Wextra -Werror -I./include
 MLX42FLAGS = -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
 LIBFT_DIR = ./libft
@@ -13,7 +13,7 @@ LD_FLAGS = -L/Users/$(USER)/.brew/opt/glfw/lib/
 
 INCLUDES = -I/opt/X11/include -Imlx
 
-SRCS = check_map1.c \
+SRCS = ${addprefix srcs/, check_map1.c \
 		check_map2.c \
 		check_path.c \
 		error_handling.c \
@@ -26,14 +26,14 @@ SRCS = check_map1.c \
 		player_directions.c \
 		print_actions.c \
 		read_map.c \
-		so_long.c \
+		so_long.c }
 
 OBJ = ${SRCS:.c=.o}
 
 all: makelibft ${NAME}
 
 makelibft:
-	make -C ${LIBFT_DIR}
+	@make -C ${LIBFT_DIR}
 
 ${NAME}: ${LIBFT} ${MLX42} ${OBJ} 
 	cc ${CFLAGS} ${OBJ} ${LIBFT_INCLUDE} $(MLX42) ${MLX42FLAGS} ${LD_FLAGS} -L${LIBFT_DIR} ${INCLUDES} -lft -o ${NAME} 

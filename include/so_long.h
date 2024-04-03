@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:51:30 by alli              #+#    #+#             */
-/*   Updated: 2024/03/15 16:51:57 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/20 14:01:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define SO_LONG_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/get_next_line.h"
-# include "../libft/ft_printf.h"
-# include "../libft/libft.h"
+# include "get_next_line.h"
+# include "ft_printf.h"
+# include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>

@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:30:24 by alli              #+#    #+#             */
-/*   Updated: 2024/03/20 13:05:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/03/20 13:42:35 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_game	*init_struct(char **grid)
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		error_msg("This game went down in flames, not initialized",
-			game, 1);
+			game, -1);
 	game->x = x_count(grid[0]);
 	game->y = y_count(grid);
 	game->grid = grid;
