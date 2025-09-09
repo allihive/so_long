@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_skipws.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhsu <yhsu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 17:02:59 by alli              #+#    #+#             */
-/*   Updated: 2024/06/27 11:51:42 by yhsu             ###   ########.fr       */
+/*   Created: 2024/05/20 16:35:35 by alli              #+#    #+#             */
+/*   Updated: 2024/08/08 16:16:49 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_skipws(char *str)
 {
-	while (lst)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (lst->next == NULL)
-			return (lst);
-		lst = lst->next;
+		if (str[i] == '\t' || str[i] == '\r' || str[i] == '\n'
+			|| str[i] == ' ' || str[i] == '\v' || str[i] == '\f')
+			i++;
+		else
+			return ;
 	}
-	return (lst);
 }

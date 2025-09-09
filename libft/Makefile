@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: alli <alli@student.hive.fi>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/19 12:48:50 by alli              #+#    #+#              #
-#    Updated: 2024/02/29 14:29:05 by alli             ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
 
 CFLAGS = -Wall -Wextra -Werror
@@ -34,8 +22,10 @@ SOURCES = ft_atoi.c\
 			ft_putnbr.c \
 			ft_putnbr_fd.c\
 			ft_putstr_fd.c\
-			ft_printf.c \
+			ft_printf.c\
+			ft_skipws.c\
 			ft_split.c\
+			ft_split_pipex.c\
 			ft_strchr.c\
 			ft_strdup.c\
 			ft_striteri.c\
@@ -62,22 +52,23 @@ SOURCES = ft_atoi.c\
 			ft_lstmap.c\
 			ft_lstnew.c\
 			ft_lstsize.c\
+			ft_whitespace.c\
 
 
 OBJECTS = ${SOURCES:.c=.o}
 
 %.o: %.c
-	cc ${CFLAGS} -c $< -o $@
+	@cc ${CFLAGS} -c $< -o $@
 
 all: ${NAME}
 
 ${NAME}: ${OBJECTS}
-	ar -rcs ${NAME} ${OBJECTS}
+	@ar -rcs ${NAME} ${OBJECTS}
 
 clean:
-	rm -f ${OBJECTS}
+	@rm -f ${OBJECTS}
 
 fclean: clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:23:39 by alli              #+#    #+#             */
-/*   Updated: 2024/03/25 09:02:43 by alli             ###   ########.fr       */
+/*   Updated: 2024/08/08 16:18:52 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 	struct s_list	*next;
 }		t_list;
 
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -39,7 +39,8 @@ void	*ft_memset(void *b, int c, size_t len);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int f, int fd);
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putstr_fd(char *s, int fd);
+void	ft_skipws(char *str);
 char	*ft_strchr(const char *str, int j);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
@@ -50,11 +51,13 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *str, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		ft_whitespace(char c);
 
 /*DANGER MALLOC*/
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
+char	**ft_split_pipex(char *str, char *charset);
 char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

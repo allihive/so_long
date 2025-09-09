@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_whitespace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhsu <yhsu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 17:02:59 by alli              #+#    #+#             */
-/*   Updated: 2024/06/27 11:51:42 by yhsu             ###   ########.fr       */
+/*   Created: 2024/05/20 16:12:56 by alli              #+#    #+#             */
+/*   Updated: 2024/08/08 16:18:28 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_whitespace(char c)
 {
-	while (lst)
-	{
-		if (lst->next == NULL)
-			return (lst);
-		lst = lst->next;
-	}
-	return (lst);
+	if (c == '\t' || c == '\r' || c == '\n'
+		|| c == ' ' || c == '\v' || c == '\f')
+		return (1);
+	else
+		return (0);
 }

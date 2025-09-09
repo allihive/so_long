@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 08:58:52 by alli              #+#    #+#             */
-/*   Updated: 2024/02/20 13:21:03 by alli             ###   ########.fr       */
+/*   Updated: 2024/08/12 09:05:05 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,23 +94,4 @@ void	*ft_zeromalloc(size_t count, size_t size)
 		i++;
 	}
 	return (str);
-}
-
-void	ft_free_strs(char **str, char **str2, char **str3)
-{
-	if (str && *str)
-	{
-		free(*str);
-		*str = NULL;
-	}
-	if (str2 && *str2)
-	{
-		free(*str2);
-		*str2 = NULL;
-	}
-	if (str3 && *str3)
-	{
-		free(*str3);
-		*str3 = NULL;
-	}
 }

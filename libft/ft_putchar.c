@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:43:54 by alli              #+#    #+#             */
-/*   Updated: 2023/11/27 08:15:51 by alli             ###   ########.fr       */
+/*   Updated: 2024/08/08 16:13:49 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	ft_ret_ptr(void *ptr)
 	base = (unsigned long) ptr;
 	help = 0;
 	temp = 0;
-	if (ptr < 0)
-		return (-1);
 	if (base > 15)
 	{
 		temp = ft_ret_ptr((void *)(base / 16));
